@@ -1,9 +1,4 @@
 ---
-title: My GitHub Pages Notebook!
+title: HimNote
 ---
-
-Hello world!
-
-Write some words here!
-
 Hola!
