@@ -1,0 +1,34 @@
+![[Pasted image 20250501201431.png|500]]
+
+리눅스 디렉토리 구조
+- bin
+    - executable들을 담고 있음. cd, cp 등 기본적인 shell cmd들을 포함 (모든 유저가 접근 가능)
+- dev
+    - device 파일들을 담고 있음 (실제 디스크에 써지지 않는 가상 파일들)
+        - dev/null - 아무 파일이나 스트링을 없애는 용도로 사용 가능
+        - dev/zero - 무한한 0 스트림을 가짐
+        - dev/random - 무한한 랜덤 밸류를 가짐
+- etc
+    - 설정 파일들을 담고 있음. 관리자나 서비스들이 사용
+- usr
+    - 유저 바이너리, 프로그램 데이터를 담고 있음
+    - usr/bin - 기본적인 유저 커맨드 포함
+    - usr/sbin - 관리자를 위한 부가적인 커맨드 포함
+    - usr/lib - 시스템 라이브러리 포함
+    - usr/share - 모든 라이브러리의 docu나 공용 데이터를 포함 (ex. man 페이지)
+- home
+    - 유저 개인 데이터
+- lib
+    - 공유 라이브러리
+- sbin
+    - 시스템 바이너리
+- tmp
+    - 일시적인 파일들
+- var
+    - 런타임 정보를 담는 variable data 파일들
+- boot
+    - boot 파일
+- proc
+    - cpuinfo 등 프로세스 및 커널 파일
+- opt
+    - optional 이라는 뜻으로, 외부 어플리케이션 설치 등에 사용
