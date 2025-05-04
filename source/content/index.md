@@ -1,4 +1,4 @@
 ---
-title: HimNote
+title: main
 ---
 Hola!
