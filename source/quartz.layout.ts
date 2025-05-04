@@ -1,6 +1,16 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
+Component.Explorer({
+  mapFn: (node) => {
+    if (node.isFolder) {
+      node.displayName = "📁 " + node.displayName
+    } else {
+      node.displayName = "📄 " + node.displayName
+    }
+  },
+})
+
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
