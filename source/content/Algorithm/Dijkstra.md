@@ -8,3 +8,57 @@
 	- 따라서 방문 처리는 하지 않음
 
 heapq 이용한 우선순위큐 사용하여 구현 가능
+
+아래는 백준 예제
+- https://www.acmicpc.net/problem/1584
+
+```Python
+import heapq
+import sys
+
+matrix = [[0 for i in range(501)] for j in range(501)]
+
+for i in range(int(input())):
+    x1, y1, x2, y2 = [int(_) for _ in input().split()]
+    for j in range(min(x1, x2), max(x1, x2)+1):
+        for k in range(min(y1, y2), max(y1, y2)+1):
+            matrix[j][k] = 1
+
+for i in range(int(input())):
+    x1, y1, x2, y2 = [int(_) for _ in input().split()]
+    for j in range(min(x1, x2), max(x1, x2)+1):
+        for k in range(min(y1, y2), max(y1, y2)+1):
+            matrix[j][k] = -1
+
+q = []
+distances = [[sys.maxsize] * 501 for i in range(501)]
+distances[0][0] = 0
+cases = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
+heapq.heappush(q, (0, 0, 0))
+while q:
+    cost, x, y = heapq.heappop(q)
+
+    if distances[x][y] < cost:
+        continue
+
+    for case in cases:
+        _x, _y = x+case[0], y+case[1]
+
+        if 0 <= _x <= 500 and 0 <= _y <= 500:
+            if matrix[_x][_y] == -1:
+                continue
+
+            next_cost = 0
+            if matrix[_x][_y] == 1:
+                next_cost += 1
+
+            if distances[_x][_y] > cost + next_cost:
+                distances[_x][_y] = cost + next_cost
+                heapq.heappush(q, (cost+next_cost, _x, _y))
+
+if distances[500][500] == sys.maxsize:
+    print(-1)
+else:
+    print(distances[500][500])
+```
