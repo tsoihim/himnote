@@ -14,6 +14,7 @@ filter 테이블의 경우에는 세 가지 체인(INPUT, OUTPUT, FORWARD)이 �
 가장 기본적인 명령어 예제는 아래와 같음
 - iptables -A INPUT -p tcp --dport 6633 -j ACCEPT (서버에 전송된 openflow 트래픽 허용하는 룰 추가)
 - iptables -D INPUT -p tcp --dport 6633 -j ACCEPT (서버에 전송된 openflow 트래픽 허용하는 룰 삭제)
+- iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8443 (포트포워딩)
 ```bash
 root@nara_dev:~ iptables --list -n -v
 Chain INPUT (policy ACCEPT 14017 packets, 2537K bytes)
