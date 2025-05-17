@@ -111,5 +111,5 @@ dependencies {
             - 잘못 사용하면 런타임에 클래스를 못찾으니 주의!
 
 **References**
-- [](https://velog.io/@franc/Gradle-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95)[https://velog.io/@franc/Gradle-기본사용법](https://velog.io/@franc/Gradle-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95)
-- [](https://velog.io/@skyepodium/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-GroupId-ArtifactId-Version)[https://velog.io/@skyepodium/스프링부트-GroupId-ArtifactId-Version](https://velog.io/@skyepodium/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-GroupId-ArtifactId-Version)
+- https://velog.io/@franc/Gradle-%EA%B8%B0%EB%B3%B8%EC%82%AC%EC%9A%A9%EB%B2%95
+- https://velog.io/@skyepodium/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-GroupId-ArtifactId-Version
