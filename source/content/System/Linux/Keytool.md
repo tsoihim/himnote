@@ -1,0 +1,2 @@
+SAN 이용한 인증서 생성 명령
+- `keytool -genkeypair -alias myalias -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore mykeystore.p12 -validity 365 -ext SAN=dns:nara.com,dns:autodiscover.nara.com,ip:172.21.113.132`
