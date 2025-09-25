@@ -75,10 +75,76 @@ Options:
 	- Rate Limit
 	- Security
 	- Logging
+
+설정 예제
 ```
-W/A
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+
+    keepalive_timeout  65;
+
+    #include /etc/nginx/conf.d/*.conf;
+
+	# Rate Limit Zone 생성
+    limit_req_zone $binary_remote_addr zone=api_limit:64m rate=20r/s; 
+
+    upstream backend_servers { # 로드밸런스
+        least_conn; # 정책
+        server 127.0.0.1:8443;
+        server 127.0.0.1:8444;
+    }
+
+    server {
+        listen       8643 ssl; # nginx 리스닝 포트
+        server_name  localhost;
+
+        ssl_certificate /etc/nginx/ssl/certificate.crt;
+        ssl_certificate_key /etc/nginx/ssl/private.key;
+        ssl_password_file /etc/nginx/ssl/cert.pwd;
+
+        location / { 
+			# ACL Whitelist
+		    allow 10.0.1.0/24;
+		    deny all;
+		    
+	        # Rate Limit Zone 지정 및 Burst Queue 사이즈 정의
+            limit_req zone=api_limit burst=40; # Rate limit
+
+            # TLS Termination
+            proxy_pass http://backend_servers; # 백엔드 서버의 주소와 포트로 요청을 프록시
+
+            # 원본 요청의 헤더를 그대로 전달
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr; # 클라이언트 IP
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # IP 체인
+            proxy_set_header X-Forwarded-Proto $scheme; # 클라이언트 프로토콜
+        }
+    }
+}
 ```
 
 
 **References**
 - https://nginx.org/en/
+- https://nginx.org/en/docs/
