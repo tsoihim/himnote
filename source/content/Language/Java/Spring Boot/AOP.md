@@ -7,7 +7,7 @@ Spring AOP는 pure Java로 구현됨. 특별한 컴파일 과정이 필요하지
 Spring AOP의 구현 목표 및 본질은 엔터프라이즈 어플리케이션의 요구사항을 만족하기 위해 AOP와 Spring IoC를 통합하는데 있음. (단순히 full-feature AOP 프레임워크를 만드는 것이 목표가 아님)
 아래와 같은 term들과 정의가 사용됨
 ### Aspect
-여러 클래스에 퍼져서 분포하는 관점(관심)을 모듈화한 것(by cut). Spring AOP는 두 종류의 방식; schema-based approach 와 @AspectJ annotation style 지원
+여러 클래스에 퍼져서 분포하는 관점(관심)을 모듈화한 것(by cut). Spring AOP는 두 종류의 방식; schema-based approach 와 @AspectJ annotation style 지원 ([[AspectJ]])
 ### Join point
 메소드 호출 등 프로그램의 특정 실행 지점. Spring AOP에서는 join point를 항상 메소드 실행으로 정의
 ### Advice
