@@ -17,7 +17,7 @@ const config: QuartzConfig = {
       tagId: "G-4SYZD53LPN",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "tsoihim.github.io/himnote",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
